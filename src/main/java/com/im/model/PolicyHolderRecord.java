@@ -1,9 +1,8 @@
 package com.im.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -12,6 +11,8 @@ public class PolicyHolderRecord {
     //@GeneratedValue annotations to indicate that this field is primary key and its value is auto generated
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long phrId;
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @Temporal(TemporalType.DATE)
     private Date appliedDate;
     private Date startDate;
     private Date endDate;

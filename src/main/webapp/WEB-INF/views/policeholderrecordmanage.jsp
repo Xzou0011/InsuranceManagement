@@ -29,10 +29,28 @@ Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 <div align="center">
     <h2>Policy Holder Record Manager</h2>
+
+
+
+
+
     <form method="get" action="searchPolicyHolderRecord">
-        <input type="text" name="keyword" /> &nbsp;
-        <input type="submit" value="Search" />
+        <%--@declare id="policyid"--%>
+        <%--@declare id="customerid"--%>
+        <%--@declare id="applieddate"--%>
+        <label for="policyId">Policy ID:</label>
+        <input type="text" name="policyId" /> &nbsp;
+        <label for="customerId">Customer ID:</label>
+        <input type="text" name="name" /> &nbsp;
+        <label for="appliedDate">Applied Date:</label>
+        <input type="text" name="appliedDate" /> &nbsp;
+        <input type="submit" value="Search NOW" />
     </form>
+
+
+
+
+
     <h3><a href="${pageContext.request.contextPath}/newPolicyHolderRecord">New Policy Holder Record</a></h3>
     <table border="1" cellpadding="5">
         <tr>

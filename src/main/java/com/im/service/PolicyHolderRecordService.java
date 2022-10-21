@@ -1,10 +1,14 @@
 package com.im.service;
 
+import com.im.model.Customer;
 import com.im.model.PolicyHolderRecord;
 import com.im.repository.PolicyHolderRecordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -32,8 +36,8 @@ public class PolicyHolderRecordService {
         repo.deleteById(id);
     }
 
-    public List<PolicyHolderRecord> search(String keyword) {
-        return repo.search(keyword);
+    public List<PolicyHolderRecord> search(String policyId, String customerId, String appliedDate) {
+        return repo.search(policyId, customerId, appliedDate);
     }
 
 }

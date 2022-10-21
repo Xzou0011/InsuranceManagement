@@ -3,13 +3,16 @@ package com.im.controller;
 import com.im.model.PolicyHolderRecord;
 import com.im.service.PolicyHolderRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -60,9 +63,24 @@ public class PolicyHolderRecordController {
         return "redirect:/policeholderrecordmanage";
     }
     //  When the path is routed to '/search' below method to be called and view returned is searchPokemon
+//    @RequestMapping(method = RequestMethod.GET, value ="/searchPolicyHolderRecord")
+//    public ModelAndView search(@RequestParam String keyword) {
+//        List<PolicyHolderRecord> result = policyHolderRecordService.search(keyword);
+//        ModelAndView mav = new ModelAndView("searchPolicyHolderRecord");
+//        mav.addObject("result", result);
+//        return mav;
+//    }
+
+//    @InitBinder
+//    public void initBinder(WebDataBinder binder){
+//        binder.registerCustomEditor(       Date.class,
+//                new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy:mm:ss"), true, 10));
+//    }
+
+
     @RequestMapping(method = RequestMethod.GET, value ="/searchPolicyHolderRecord")
-    public ModelAndView search(@RequestParam String keyword) {
-        List<PolicyHolderRecord> result = policyHolderRecordService.search(keyword);
+    public ModelAndView search(@RequestParam String policyId, String customerId, String appliedDate) {
+        List<PolicyHolderRecord> result = policyHolderRecordService.search(policyId, customerId, appliedDate);
         ModelAndView mav = new ModelAndView("searchPolicyHolderRecord");
         mav.addObject("result", result);
         return mav;

@@ -1,11 +1,14 @@
 package com.im.repository;
 
+import com.im.model.Customer;
 import com.im.model.PolicyHolderRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+
+import java.util.Date;
 import java.util.List;
 import static org.springframework.data.repository.query.parser.Part.Type.LIKE;
 
@@ -24,14 +27,10 @@ public interface PolicyHolderRecordRepository extends JpaRepository<PolicyHolder
 
     //the search()method is just an abstract method annotated with the @Query annotation. The search query is JPA query.
     @Query(value = "SELECT p FROM PolicyHolderRecord p WHERE " +
-            "lower(p.phrId) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(p.appliedDate) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(p.startDate) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(p.endDate) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(p.status) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(p.premium) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(p.otherDetails) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(p.customerId) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(p.policyId) LIKE lower(CONCAT('%', :keyword, '%'))")
-    public List<PolicyHolderRecord> search(@Param("keyword") String keyword);
+            "lower(p.appliedDate) LIKE lower(CONCAT('%', :appliedDate, '%')) OR " +
+            "lower(p.customerId) LIKE lower(CONCAT('%', :customerId, '%')) OR " +
+            "lower(p.policyId) LIKE lower(CONCAT('%', :policyId, '%'))")
+
+    public List<PolicyHolderRecord> search(@Param("policyId") String policyId, @Param("customerId") String customerId, @Param("appliedDate") String appliedDate);
+
 }

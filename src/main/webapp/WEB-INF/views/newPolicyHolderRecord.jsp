@@ -44,15 +44,15 @@
                 <td><form:input path="otherDetails" /></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value="Save"></td>
-            </tr>
-            <tr>
                 <td>Customer ID: </td>
                 <td><form:input path="customerId" /></td>
             </tr>
             <tr>
                 <td>Policy ID: </td>
                 <td><form:input path="policyId" /></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" value="Save"></td>
             </tr>
         </table>
     </form:form>
