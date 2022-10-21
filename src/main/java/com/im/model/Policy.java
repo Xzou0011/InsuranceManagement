@@ -1,10 +1,10 @@
 package com.im.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
+//@Table(name = "policys")
 @Entity
 public class Policy {
     @Id
@@ -13,6 +13,10 @@ public class Policy {
     private Long policyId;
     private String policeType;
     private String policyDesr;
+
+//    @ManyToMany(mappedBy = "policy", fetch = FetchType.LAZY)
+//    private Set<Agents> agent;
+
 
     public Policy(){
 

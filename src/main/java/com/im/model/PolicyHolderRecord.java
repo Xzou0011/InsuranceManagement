@@ -7,11 +7,12 @@ import java.util.Date;
 
 @Entity
 public class PolicyHolderRecord {
-    @Id
+
     //@GeneratedValue annotations to indicate that this field is primary key and its value is auto generated
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
     private Long phrId;
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.DATE)
     private Date appliedDate;
     private Date startDate;

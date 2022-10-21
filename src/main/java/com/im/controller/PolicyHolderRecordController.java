@@ -71,15 +71,17 @@ public class PolicyHolderRecordController {
 //        return mav;
 //    }
 
-//    @InitBinder
-//    public void initBinder(WebDataBinder binder){
-//        binder.registerCustomEditor(       Date.class,
-//                new CustomDateEditor(new SimpleDateFormat("dd/MM/yyyy:mm:ss"), true, 10));
-//    }
+    @InitBinder
+    public void initBinder(WebDataBinder binder) {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        dateFormat.setLenient(false);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
 
 
     @RequestMapping(method = RequestMethod.GET, value ="/searchPolicyHolderRecord")
-    public ModelAndView search(@RequestParam String policyId, String customerId, String appliedDate) {
+    public ModelAndView search(@RequestParam String policyId,  String customerId,  String appliedDate) {
         List<PolicyHolderRecord> result = policyHolderRecordService.search(policyId, customerId, appliedDate);
         ModelAndView mav = new ModelAndView("searchPolicyHolderRecord");
         mav.addObject("result", result);

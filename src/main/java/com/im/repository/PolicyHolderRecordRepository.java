@@ -6,8 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import static org.springframework.data.repository.query.parser.Part.Type.LIKE;
@@ -27,10 +29,9 @@ public interface PolicyHolderRecordRepository extends JpaRepository<PolicyHolder
 
     //the search()method is just an abstract method annotated with the @Query annotation. The search query is JPA query.
     @Query(value = "SELECT p FROM PolicyHolderRecord p WHERE " +
-            "lower(p.appliedDate) LIKE lower(CONCAT('%', :appliedDate, '%')) OR " +
-            "lower(p.customerId) LIKE lower(CONCAT('%', :customerId, '%')) OR " +
-            "lower(p.policyId) LIKE lower(CONCAT('%', :policyId, '%'))")
+            "lower(p.policyId) LIKE lower(CONCAT('%', :policyId, '%')) AND " +
+            "lower(p.customerId) LIKE lower(CONCAT('%', :customerId, '%')) AND " +
+            "lower(p.appliedDate) LIKE lower(CONCAT('%', :appliedDate, '%'))")
 
-    public List<PolicyHolderRecord> search(@Param("policyId") String policyId, @Param("customerId") String customerId, @Param("appliedDate") String appliedDate);
-
+    List<PolicyHolderRecord> search(@Param("policyId") String policyId, @Param("customerId") String customerId, @Param("appliedDate") String appliedDate);
 }

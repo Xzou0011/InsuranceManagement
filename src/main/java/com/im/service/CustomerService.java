@@ -32,9 +32,9 @@ public class CustomerService {
         repo.deleteById(id);
     }
 
-    public List<Customer> search(String keyword) {
-        return repo.search(keyword);
-    }
+//    public List<Customer> search(String keyword) {
+//        return repo.search(keyword);
+//    }
 
     public List<Customer> findByIdAndName (Long customerId, String name){
         return repo.findByIdAndName(customerId, name);

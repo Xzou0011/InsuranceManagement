@@ -22,17 +22,17 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     */
 
     //the search()method is just an abstract method annotated with the @Query annotation. The search query is JPA query.
-    @Query(value = "SELECT c FROM Customer c WHERE " +
-            "lower(c.customerId) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(c.name) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(c.address) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(c.contactNumber) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(c.emailAddress) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(c.sex) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(c.dateOfBirth) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(c.employmentStatus) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
-            "lower(c.riskRate) LIKE lower(CONCAT('%', :keyword, '%'))")
-    public List<Customer> search(@Param("keyword") String keyword);
+//    @Query(value = "SELECT c FROM Customer c WHERE " +
+//            "lower(c.customerId) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
+//            "lower(c.name) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
+//            "lower(c.address) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
+//            "lower(c.contactNumber) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
+//            "lower(c.emailAddress) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
+//            "lower(c.sex) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
+//            "lower(c.dateOfBirth) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
+//            "lower(c.employmentStatus) LIKE lower(CONCAT('%', :keyword, '%')) OR " +
+//            "lower(c.riskRate) LIKE lower(CONCAT('%', :keyword, '%'))")
+//    public List<Customer> search(@Param("keyword") String keyword);
 
     @Query("SELECT c FROM Customer c WHERE c.customerId = ?1 AND c.name = ?2")
     List<Customer> findByIdAndName(Long customerId, String name);
