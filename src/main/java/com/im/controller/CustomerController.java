@@ -88,4 +88,12 @@ public class CustomerController {
         mav.addObject("resultByIdAndName", result);
         return mav;
     }
+
+    @RequestMapping(method = RequestMethod.GET, value ="/searchByIdAndNameDetail")
+    public ModelAndView searchByNameDetail(@RequestParam long customerId, @RequestParam String name) {
+        List<Customer> result = customerService.findByIdAndName(customerId, name);
+        ModelAndView mav = new ModelAndView("searchCustomerByIdAndNameDetail");
+        mav.addObject("resultByIdAndNameDetail", result);
+        return mav;
+    }
 }

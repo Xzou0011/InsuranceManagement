@@ -30,25 +30,14 @@
         <tr>
             <th>Customer ID</th>
             <th>Name</th>
-            <th>Address</th>
-            <th>Contact Number</th>
-            <th>Email Address</th>
-            <th>Sex</th>
-            <th>Date Of Birth</th>
-            <th>Employment Status</th>
-            <th>Risk Rate</th>
         </tr>
         <c:forEach items="${resultByIdAndName}" var="customer">
             <tr>
                 <td>${customer.customerId}</td>
                 <td>${customer.name}</td>
-                <td>${customer.address}</td>
-                <td>${customer.contactNumber}</td>
-                <td>${customer.emailAddress}</td>
-                <td>${customer.sex}</td>
-                <td>${customer.dateOfBirth}</td>
-                <td>${customer.employmentStatus}</td>
-                <td>${customer.riskRate}</td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/searchByIdAndNameDetail?customerId=${customer.customerId}&name=${customer.name}">Show Detail</a>
+                </td>
             </tr>
         </c:forEach>
     </table>

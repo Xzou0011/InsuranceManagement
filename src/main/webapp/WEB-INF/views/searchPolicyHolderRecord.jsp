@@ -19,27 +19,20 @@
     <h2>Search Result</h2>
     <table border="1" cellpadding="5">
         <tr>
-            <th>Policy Holder Record ID</th>
             <th>Applied Date</th>
-            <th>Start Date</th>
-            <th>End Date</th>
             <th>Status</th>
-            <th>Premium</th>
-            <th>Other Details</th>
             <th>Customer ID</th>
             <th>Policy ID</th>
         </tr>
         <c:forEach items="${result}" var="policyholderrecord">
             <tr>
-                <td>${policyholderrecord.phrId}</td>
                 <td>${policyholderrecord.appliedDate}</td>
-                <td>${policyholderrecord.startDate}</td>
-                <td>${policyholderrecord.endDate}</td>
                 <td>${policyholderrecord.status}</td>
-                <td>${policyholderrecord.premium}</td>
-                <td>${policyholderrecord.otherDetails}</td>
                 <td>${policyholderrecord.customerId}</td>
                 <td>${policyholderrecord.policyId}</td>
+                <td>
+                    <a href="${pageContext.request.contextPath}/searchPolicyHolderRecordDetail?policyId=${policyholderrecord.policyId}&customerId=${policyholderrecord.customerId}&appliedDate=${policyholderrecord.appliedDate}">Show Detail</a>
+                </td>
             </tr>
         </c:forEach>
     </table>

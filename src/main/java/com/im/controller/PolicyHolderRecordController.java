@@ -85,4 +85,12 @@ public class PolicyHolderRecordController {
         mav.addObject("result", result);
         return mav;
     }
+
+    @RequestMapping(method = RequestMethod.GET, value ="/searchPolicyHolderRecordDetail")
+    public ModelAndView searchResultDetail(@RequestParam String policyId, String customerId, String appliedDate) {
+        List<PolicyHolderRecord> result = policyHolderRecordService.search(policyId, customerId, appliedDate);
+        ModelAndView mav = new ModelAndView("searchPolicyHolderRecordDetail");
+        mav.addObject("result", result);
+        return mav;
+    }
 }
