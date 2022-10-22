@@ -4,8 +4,8 @@ import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
-//@Table(name = "policys")
 @Entity
+@Table(name = "policys")
 public class Policy {
     @Id
     //@GeneratedValue annotations to indicate that this field is primary key and its value is auto generated
@@ -14,8 +14,8 @@ public class Policy {
     private String policeType;
     private String policyDesr;
 
-//    @ManyToMany(mappedBy = "policy", fetch = FetchType.LAZY)
-//    private Set<Agents> agent;
+    @OneToMany(mappedBy = "policy")
+    private Set<PolicyHolderRecord> phrs;
 
 
     public Policy(){
@@ -46,5 +46,6 @@ public class Policy {
     public void setPolicyDesr(String policyDesr) {
         this.policyDesr = policyDesr;
     }
+
 
 }

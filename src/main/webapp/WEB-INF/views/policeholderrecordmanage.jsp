@@ -63,6 +63,8 @@ Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
             <th>Other Details</th>
             <th>Customer ID</th>
             <th>Policy ID</th>
+            <th>Police Type</th>
+            <th>Customer Name</th>
         </tr>
         <c:forEach items="${listPolicyHolderRecord}" var="policyholderrecord">
             <tr>
@@ -75,6 +77,8 @@ Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                 <td>${policyholderrecord.otherDetails}</td>
                 <td>${policyholderrecord.customerId}</td>
                 <td>${policyholderrecord.policyId}</td>
+                <td>${policyholderrecord.policy.policeType}</td>
+                <td>${policyholderrecord.customer.name}</td>
                 <td>
                     <a href="${pageContext.request.contextPath}/editPolicyHolderRecord?id=${policyholderrecord.phrId}">Edit</a>
                     &nbsp;&nbsp;&nbsp;
@@ -82,8 +86,6 @@ Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                 </td>
             </tr>
         </c:forEach>
-
-
     </table>
 </div>
 </body>

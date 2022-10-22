@@ -1,11 +1,10 @@
 package com.im.model;
 
-import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "policyholderrecords")
 public class PolicyHolderRecord {
 
     //@GeneratedValue annotations to indicate that this field is primary key and its value is auto generated
@@ -22,6 +21,14 @@ public class PolicyHolderRecord {
     private String otherDetails;
     private Long customerId;
     private Long policyId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "policyId", insertable=false, updatable=false)
+    private Policy policy;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "customerId", insertable=false, updatable=false)
+    private Customer customer;
 
     public PolicyHolderRecord(){
 
@@ -97,5 +104,21 @@ public class PolicyHolderRecord {
 
     public void setPolicyId(Long policyId) {
         this.policyId = policyId;
+    }
+
+    public Policy getPolicy() {
+        return policy;
+    }
+
+    public void setPolicy(Policy policy) {
+        this.policy = policy;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

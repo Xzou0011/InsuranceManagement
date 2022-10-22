@@ -1,8 +1,10 @@
 package com.im.model;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
+@Table(name = "customers")
 public class Customer{
     @Id
     //@GeneratedValue annotations to indicate that this field is primary key and its value is auto generated
@@ -16,6 +18,9 @@ public class Customer{
     private Date dateOfBirth;
     private boolean employmentStatus;
     private Double riskRate;
+
+    @OneToMany(mappedBy = "customer")
+    private Set<PolicyHolderRecord> phrs;
 
     public Customer() {
     }
