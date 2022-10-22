@@ -86,8 +86,6 @@ Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
                 </td>
             </tr>
         </c:forEach>
-
-
     </table>
 </div>
 </body>

@@ -29,13 +29,11 @@ public class CustomerController {
         binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
     }
 
-    //    Default home path '/' will return view index with message
     @RequestMapping(method = RequestMethod.GET,value="/")
     public String printHello(ModelMap model){
         model.addAttribute("message","Hello Spring MVC in maven");
         return "index";
     }
-    //  When the path is routed to '/home' below method to be called and view returned is home
     @RequestMapping(method = RequestMethod.GET, value="/home")
     public ModelAndView home1(){
         ModelAndView modelAndView = new ModelAndView("home");
@@ -43,7 +41,7 @@ public class CustomerController {
         modelAndView.addObject("message","Hi Welcome to Sprint MVC");
         return modelAndView;
     }
-    //  When the path is routed to '/pokemanage' below method to be called and view returned is pokemanage
+
     @RequestMapping(method = RequestMethod.GET, value = "/pokemanage")
     public ModelAndView home() {
         List<Customer> listCustomer = customerService.listAll();
@@ -54,20 +52,17 @@ public class CustomerController {
         mav.addObject("listCustomer", listCustomer);
         return mav;
     }
-    //  When the path is routed to '/new' below method to be called and view returned is newPokemon
     @RequestMapping(method = RequestMethod.GET, value ="/new")
     public String newCustomerForm(Map<String, Object> model) {
         Customer Customer = new Customer();
         model.put("customer", Customer);
         return "newPokemon";
     }
-    //  When a form is submitted in POST and action method as 'save' below method to be called returned to home '/' i.e. index
     @RequestMapping(method = RequestMethod.POST, value = "/save")
     public String saveCustomer(@ModelAttribute("customer") Customer customer) {
         customerService.save(customer);
         return "redirect:/";
     }
-    //  When the path is routed to '/edit' below method to be called and view returned is editPokemon
     @RequestMapping(method = RequestMethod.GET, value = "/edit")
     public ModelAndView editPokemonForm(@RequestParam long id) {
         ModelAndView mav = new ModelAndView("editPokemon");
@@ -75,21 +70,11 @@ public class CustomerController {
         mav.addObject("customer", customer);
         return mav;
     }
-    //  When the path is routed to '/delete' below method to be called and view returned is pokemanage
     @RequestMapping(method = RequestMethod.GET, value ="/delete")
     public String deletePokemonForm(@RequestParam long id) {
         customerService.delete(id);
         return "redirect:/pokemanage";
     }
-    //  When the path is routed to '/search' below method to be called and view returned is searchPokemon
-//    @RequestMapping(method = RequestMethod.GET, value ="/search")
-//    public ModelAndView search(@RequestParam String keyword) {
-//        List<Customer> result = customerService.search(keyword);
-//        ModelAndView mav = new ModelAndView("searchPokemon");
-//        mav.addObject("result", result);
-//
-//        return mav;
-//    }
 
     @RequestMapping(method = RequestMethod.GET, value ="/searchCustomerByIdAndName")
     public ModelAndView findByIdAndName(Long customerId, String name) {

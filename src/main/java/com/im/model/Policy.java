@@ -8,7 +8,6 @@ import java.util.Set;
 @Table(name = "policys")
 public class Policy {
     @Id
-    //@GeneratedValue annotations to indicate that this field is primary key and its value is auto generated
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long policyId;
     private String policeType;

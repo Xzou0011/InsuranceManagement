@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: sunil
@@ -19,6 +20,7 @@
     <a href="${pageContext.request.contextPath}/pokemanage">Show Customer</a>
     <br>
     <a href="${pageContext.request.contextPath}/policeholderrecordmanage">Show Policy Holder Record</a>
+    <a href="<c:url value="/logout" />">Logout</a>
 </div>
 </body>
 </html>

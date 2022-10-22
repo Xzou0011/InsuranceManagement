@@ -8,7 +8,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Service
-//@Transactional annotation so all of its methods will be intercepted by Spring Data JPA for transaction management
 @Transactional
 public class PolicyService {
 

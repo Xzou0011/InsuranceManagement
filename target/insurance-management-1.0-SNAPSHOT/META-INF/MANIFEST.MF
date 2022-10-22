@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Created-By: IntelliJ IDEA
+Built-By: zouxin
+Build-Jdk: 1.8.0_342
+Implementation-Title: insurance-management Maven Webapp
+Implementation-Version: 1.0-SNAPSHOT
+Implementation-Vendor-Id: SpringMVC
+Main-Class: ${start-class}
+

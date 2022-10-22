@@ -7,8 +7,8 @@ import java.util.Set;
 @Table(name = "customers")
 public class Customer{
     @Id
-    //@GeneratedValue annotations to indicate that this field is primary key and its value is auto generated
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "customerId")
     private Long customerId;
     private String name;
     private String address;
@@ -18,6 +18,7 @@ public class Customer{
     private Date dateOfBirth;
     private boolean employmentStatus;
     private Double riskRate;
+    private int agent_customer_id;
 
     @OneToMany(mappedBy = "customer")
     private Set<PolicyHolderRecord> phrs;
@@ -26,7 +27,7 @@ public class Customer{
     }
 
     public Customer(Long customerId, String name, String address, Long contactNumber, String emailAddress, String sex,
-                    Date dateOfBirth, boolean employmentStatus, Double riskRate) {
+                    Date dateOfBirth, boolean employmentStatus, Double riskRate, int agent_customer_id) {
         this.customerId = customerId;
         this.name = name;
         this.address = address;
@@ -36,6 +37,7 @@ public class Customer{
         this.dateOfBirth = dateOfBirth;
         this.employmentStatus = employmentStatus;
         this.riskRate = riskRate;
+        this.agent_customer_id = agent_customer_id;
     }
 
 
@@ -109,5 +111,21 @@ public class Customer{
 
     public void setRiskRate(Double riskRate) {
         this.riskRate = riskRate;
+    }
+
+    public int getAgent_customer_id() {
+        return agent_customer_id;
+    }
+
+    public void setAgent_customer_id(int agent_customer_id) {
+        this.agent_customer_id = agent_customer_id;
+    }
+
+    public Set<PolicyHolderRecord> getPhrs() {
+        return phrs;
+    }
+
+    public void setPhrs(Set<PolicyHolderRecord> phrs) {
+        this.phrs = phrs;
     }
 }

@@ -7,11 +7,9 @@ import java.util.Date;
 @Table(name = "policyholderrecords")
 public class PolicyHolderRecord {
 
-    //@GeneratedValue annotations to indicate that this field is primary key and its value is auto generated
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long phrId;
-    //@DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     @Temporal(TemporalType.DATE)
     private Date appliedDate;
     private Date startDate;
@@ -26,7 +24,9 @@ public class PolicyHolderRecord {
     @JoinColumn(name = "policyId", insertable=false, updatable=false)
     private Policy policy;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "customerId", insertable=false, updatable=false)
+    @ManyToOne(cascade = CascadeType.ALL, optional = false)
     @JoinColumn(name = "customerId", insertable=false, updatable=false)
     private Customer customer;
 

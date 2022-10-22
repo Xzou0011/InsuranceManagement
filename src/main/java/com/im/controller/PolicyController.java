@@ -19,7 +19,6 @@ public class PolicyController {
     @Autowired
     private PolicyService policyService;
 
-    //  When the path is routed to '/pokemanage' below method to be called and view returned is pokemanage
     @RequestMapping(method = RequestMethod.GET, value = "/policymanage")
     public ModelAndView home() {
         List<Policy> listPolicy = policyService.listAll();
@@ -30,20 +29,17 @@ public class PolicyController {
         mav.addObject("listPolicy", listPolicy);
         return mav;
     }
-    //  When the path is routed to '/new' below method to be called and view returned is newPokemon
     @RequestMapping(method = RequestMethod.GET, value ="/newPolicy")
     public String newPolicyForm(Map<String, Object> model) {
         Policy listPolicy = new Policy();
         model.put("policy", listPolicy);
         return "newPolicy";
     }
-    //  When a form is submitted in POST and action method as 'save' below method to be called returned to home '/' i.e. index
     @RequestMapping(method = RequestMethod.POST, value = "/savePolicy")
     public String savePolicy(@ModelAttribute("policy") Policy policy) {
         policyService.save(policy);
         return "redirect:/";
     }
-    //  When the path is routed to '/edit' below method to be called and view returned is editPokemon
     @RequestMapping(method = RequestMethod.GET, value = "/editPolicy")
     public ModelAndView editPolicy(@RequestParam long id) {
         ModelAndView mav = new ModelAndView("editPolicy");
@@ -51,13 +47,11 @@ public class PolicyController {
         mav.addObject("policy", policy);
         return mav;
     }
-    //  When the path is routed to '/delete' below method to be called and view returned is pokemanage
     @RequestMapping(method = RequestMethod.GET, value ="/deletePolicy")
     public String deletePolicyForm(@RequestParam long id) {
         policyService.delete(id);
         return "redirect:/policymanage";
     }
-    //  When the path is routed to '/search' below method to be called and view returned is searchPokemon
     @RequestMapping(method = RequestMethod.GET, value ="/searchPolicy")
     public ModelAndView search(@RequestParam String keyword) {
         List<Policy> result = policyService.search(keyword);

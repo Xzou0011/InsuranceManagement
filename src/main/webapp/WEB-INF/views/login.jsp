@@ -1,31 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>Login Page</title>
+    <title>login</title>
 </head>
 <body>
-
-<h1 align = "center"> Welcome to Insurance Management </h1>
-<h2 align = "center"> Log In </h2>
-
-<br/>
-
-<div align = "center">
-
-    <a href="${pageContext.request.contextPath}/index">
-        <input type="button" value="Admin" />
-    </a>
-
+<h1> Test login page</h1>
+<form:form>
+    Username : <input type="text" name="username">
     <br/>
-
-    <a href="${pageContext.request.contextPath}/index">
-        <input type="button" value="Agent" />
-    </a>
-
-</div>
-
+    Password : <input type="text" name="password">
+    <input type="submit" value="Login">
+</form:form>
 </body>
 </html>
